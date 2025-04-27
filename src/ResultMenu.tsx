@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 export default function ResultMenu({
   isVisible,
   resultText,
@@ -7,10 +9,30 @@ export default function ResultMenu({
   resultText: string;
   resetGame: () => void;
 }) {
+  useEffect(() => {
+    if (isVisible) {
+      const victorySound = new Audio("sounds/victory.mp3");
+
+      victorySound.play().catch((e) => console.error(e));
+    }
+  }, [isVisible]);
+
   return (
-    <div className={`${isVisible ? "visible opacity-100" : "invisible opacity-0"} backdrop-blur-xl absolute top-0 transition-opacity duration-500 h-screen w-screen z-10`}>
-      <div className={`${isVisible ? "opacity-100" : "opacity-0"} transition duration-500 fixed left-0 top-0 h-full w-full bg-black/50`}></div>
-      <div className={`${isVisible ? "opacity-100" : "opacity-0"} transition-opacity duration-500 absolute w-[85%] h-auto sm:w-[550px] sm:h-[323px] py-[7vw] sm:py-[40px] flex flex-col items-center justify-center bg-black/10  border-white/50 border rounded-[25px] sm:rounded-[40px] center-align`}>
+    <div
+      className={`${
+        isVisible ? "visible opacity-100" : "invisible opacity-0"
+      } backdrop-blur-xl absolute top-0 transition-opacity duration-500 h-screen w-screen z-10`}
+    >
+      <div
+        className={`${
+          isVisible ? "opacity-100" : "opacity-0"
+        } transition duration-500 fixed left-0 top-0 h-full w-full bg-black/50`}
+      ></div>
+      <div
+        className={`${
+          isVisible ? "opacity-100" : "opacity-0"
+        } transition-opacity duration-500 absolute w-[85%] h-auto sm:w-[550px] sm:h-[323px] py-[7vw] sm:py-[40px] flex flex-col items-center justify-center bg-black/10  border-white/50 border rounded-[25px] sm:rounded-[40px] center-align`}
+      >
         <h3 className="text-center text-[4.5vw] sm:text-[28px] text-shadow font-bold">
           Game Over
         </h3>
