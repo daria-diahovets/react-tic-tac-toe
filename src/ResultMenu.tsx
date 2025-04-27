@@ -21,7 +21,7 @@ export default function ResultMenu({
     <div
       className={`${
         isVisible ? "visible opacity-100" : "invisible opacity-0"
-      } backdrop-blur-xl absolute top-0 transition-opacity duration-500 h-screen w-screen z-10`}
+      } backdrop-blur-xl fixed transition-opacity duration-500 min-h-full w-screen z-10`}
     >
       <div
         className={`${
